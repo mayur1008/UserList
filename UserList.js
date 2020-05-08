@@ -17,7 +17,7 @@ const app = new Vue({
         }
     },
     mounted: function () {
-        this.getAllUsers()
+        //this.getAllUsers()
     },
     methods: {
         getAllUsers: function () {
