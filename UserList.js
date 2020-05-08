@@ -33,7 +33,7 @@ const app = new Vue({
         updateUser: function () {
             this.items = this.items.map(item => item.id === this.newItem.id ? this.newItem : item)
             this.newItem = { first_name: "", last_name: "" }
-            tcode= 'create'
+            this.tcode= 'create'
         },
         changeState: function (newState) {
             this.state = newState,
