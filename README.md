@@ -4,9 +4,12 @@
 Display list of all the users
 
 ## Features
-Add user to the list
+Add user
+
 Update user
+
 Delete user
+
 
 ## link
 bootstrap-https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css
