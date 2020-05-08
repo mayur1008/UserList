@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<header>
+    <!-- /bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>User List</title>
+</header>
+
+<body>
+
+
+    <div id='user-list' class="container-fluid">
+        <div class="row m-3  ">
+
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <h3 class="text-info"> {{header}}</h3>
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <button class="btn btn-info float-right" v-if="state==='default'" @click='changeState("Edit")'>Add
+                    User</button>
+                <button class="btn btn-info float-right" v-else @click='changeState("default")'>Cancle</button>
+            </div>
+        </div>
+
+        <hr class="bg-info" />
+
+        <div class="alert alert-success" role="alert" v-if="successMassage">
+            A simple success
+        </div>
+        <div class="alert alert-danger" role="alert" v-if="errorMassage">
+            A simple danger
+        </div>
+
+
+
+        <div v-if="state==='Edit'" class="form-row m-3">
+            <div class="col">
+                <input class="form-control" type="text" v-model='newItem.first_name' placeholder="First Name">
+            </div>
+            <div class="col">
+                <input class="form-control" type="text" v-model='newItem.last_name' placeholder="Last Name">
+            </div>
+            <div class="col">
+                <button type="button" class="btn btn-primary" @click="saveUser" v-if="tcode==='create'"
+                    :disabled="newItem.last_name.length===0">Save User </button>
+                <button type="button" class="btn btn-primary" @click="updateUser" v-else
+                    :disabled="newItem.last_name.length===0">Update User</button>
+            </div>
+        </div>
+
+
+        <table class="table table-bordered">
+            <thead class="">
+                <tr class="text-center bg-info text-light ">
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody v-for="item in reversedItems">
+                <tr class="text-center">
+                    <td> {{item.first_name}}</td>
+                    <td> {{item.last_name}}</td>
+                    <td><button type="button" class="btn btn-sm btn-link" @click="editUser(item.id)">Edit</button></td>
+                    <td> <button type="button" class="btn btn-sm btn-link" @click="removeUser(item.id)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p class="m-3" v-if='items.length===0'>Plaese add some user </p>
+    </div>
+
+
+
+
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+    <script type="text/javascript" src="./UserList.js "></script>
+
+</body>
+
+</html>
