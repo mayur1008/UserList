@@ -42,6 +42,7 @@ const app = new Vue({
         removeUser: function (userid) {
             this.items = this.items.filter(item => item.id !== userid)
             this.newItem = { first_name: "", last_name: "" }
+            this.tcode= 'create'
         },
         editUser: function (userid) {
             this.tcode = "update",
